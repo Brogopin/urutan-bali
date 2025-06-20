@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Urutan Ayam Bali - Frozen Food Enak</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Jual urutan ayam Bali dan bakso ayam frozen food enak. Pesan via WhatsApp, ready stock siap kirim.">
+    <meta name="keywords" content="jual urutan ayam bali, bakso ayam, frozen food, makanan beku, sosis ayam">
+    
+    <!-- Mobile Theme Color -->
+    <meta name="theme-color" content="#ff6b35">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff6b35',
+                        secondary: '#f7931e',
+                        accent: '#ffcc02',
+                        whatsapp: '#25d366',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Critical CSS untuk fix scroll mobile */
+        html {
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+        
+        body {
+            min-height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto; /* Pastikan vertical scroll berfungsi */
+            -webkit-overflow-scrolling: touch; /* Smooth scroll iOS */
+            touch-action: pan-y; /* Izinkan vertical scroll */
+        }
+        
+        /* Fix untuk mobile menu */
+        .mobile-menu-open {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
+        
+        /* Animations yang dioptimasi */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Navbar scroll effect */
+        .navbar-scrolled {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Mobile menu transition */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        /* Touch feedback */
+        .touch-feedback:active {
+            transform: scale(0.98);
+            transition: transform 0.1s;
+        }
+        
+        /* Responsive improvements */
+        @media (max-width: 768px) {
+            .floating-element {
+                display: none; /* Hide decorative elements on mobile */
+            }
+            
+            /* Better mobile spacing */
+            .mobile-px {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .mobile-py {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+        }
+        
+        /* Scroll indicator */
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% {
+                transform: translate3d(0,0,0);
+            }
+            40%, 43% {
+                transform: translate3d(0,-30px,0);
+            }
+            70% {
+                transform: translate3d(0,-15px,0);
+            }
+            90% {
+                transform: translate3d(0,-4px,0);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden">
+        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-80 max-w-sm bg-white shadow-2xl z-50">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <span class="text-xl font-bold text-primary">🍗 Menu</span>
+                    <button id="close-mobile-menu" class="text-gray-600 hover:text-primary p-2 rounded-full">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <nav class="space-y-4">
+                    <a href="#home" class="mobile-nav-link block text-lg font-medium text-gray-800 hover:text-primary p-3 rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-home mr-3"></i>Home
+                    </a>
+                    <a href="#products" class="mobile-nav-link block text-lg font-medium text-gray-800 hover:text-primary p-3 rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-shopping-basket mr-3"></i>Produk
+                    </a>
+                    <a href="#about" class="mobile-nav-link block text-lg font-medium text-gray-800 hover:text-primary p-3 rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-info-circle mr-3"></i>Tentang
+                    </a>
+                    <a href="#how-to-order" class="mobile-nav-link block text-lg font-medium text-gray-800 hover:text-primary p-3 rounded-lg hover:bg-gray-50">
+                        <i class="fas fa-list-ol mr-3"></i>Cara Pesan
+                    </a>
+                    <a href="#contact" class="mobile-nav-link block text-lg font-medium text-white bg-whatsapp hover:bg-green-600 p-3 rounded-lg mt-4">
+                        <i class="fab fa-whatsapp mr-3"></i>Kontak
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 lg:h-20">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <span class="text-xl sm:text-2xl lg:text-3xl font-bold text-primary">
+                        🍗 Urutan Ayam Bali
+                    </span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-800 hover:text-primary font-medium transition-colors">Home</a>
+                    <a href="#products" class="text-gray-800 hover:text-primary font-medium transition-colors">Produk</a>
+                    <a href="#about" class="text-gray-800 hover:text-primary font-medium transition-colors">Tentang</a>
+                    <a href="#how-to-order" class="text-gray-800 hover:text-primary font-medium transition-colors">Cara Pesan</a>
+                    <a href="#contact" class="bg-whatsapp text-white px-6 py-2 rounded-full hover:bg-green-600 transition-colors font-medium">
+                        <i class="fab fa-whatsapp mr-2"></i>Kontak
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-800 hover:text-primary p-2 rounded-full touch-feedback" id="mobile-menu-button">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary via-secondary to-accent overflow-hidden" id="home">
+        <!-- Floating Elements (hidden on mobile) -->
+        <div class="absolute inset-0 hidden md:block">
+            <div class="floating-element absolute top-20 left-10 text-4xl float" style="animation-delay: 0s;">🌟</div>
+            <div class="floating-element absolute top-60 right-20 text-3xl float" style="animation-delay: 2s;">✨</div>
+            <div class="floating-element absolute bottom-40 left-20 text-5xl float" style="animation-delay: 4s;">🍽️</div>
+        </div>
+        
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto pt-20">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 fade-in-up leading-tight">
+                <span class="block">Urutan Ayam Bali</span>
+                <span class="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-yellow-200 mt-2">Enak & Praktis</span>
+            </h1>
+            <p class="text-lg sm:text-xl md:text-2xl mb-8 max-w-4xl mx-auto opacity-95 fade-in-up leading-relaxed" style="animation-delay: 0.3s;">
+                Jual urutan ayam Bali dan bakso ayam frozen food yang enak dan praktis. Ready stock, siap kirim ke seluruh Indonesia!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center fade-in-up" style="animation-delay: 0.6s;">
+                <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center bg-whatsapp text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-green-600 transition-all duration-300 transform hover:scale-105 shadow-lg touch-feedback">
+                    <i class="fab fa-whatsapp mr-3 text-xl"></i>
+                    Pesan Sekarang
+                </a>
+                <a href="#products" class="w-full sm:w-auto inline-flex items-center justify-center bg-white/20 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white/30 transition-all duration-300 backdrop-blur-sm touch-feedback">
+                    <i class="fas fa-arrow-down mr-3"></i>
+                    Lihat Produk
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 scroll-indicator">
+            <i class="fas fa-chevron-down text-white text-2xl opacity-70"></i>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-16 lg:py-24 bg-gray-50" id="products">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 fade-in-up">
+                    Produk yang Kami Jual
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto fade-in-up">
+                    Urutan ayam Bali dan bakso ayam frozen food siap saji
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Urutan Ayam Bali -->
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 fade-in-up">
+                    <div class="h-64 md:h-80 bg-gradient-to-br from-primary to-secondary flex items-center justify-center relative">
+                        <i class="fas fa-drumstick-bite text-6xl md:text-8xl text-white opacity-90"></i>
+                        <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                            <span class="text-white font-semibold text-sm">Best Seller</span>
+                        </div>
+                    </div>
+                    <div class="p-6 lg:p-8">
+                        <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Urutan Ayam Bali</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Sosis ayam khas Bali dengan rasa yang gurih dan enak. Cocok untuk digoreng atau dipanggang sebagai lauk praktis.
+                        </p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check-circle text-whatsapp mr-3"></i>
+                                <span>Rasa Gurih dan Enak</span>
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check-circle text-whatsapp mr-3"></i>
+                                <span>Praktis dan Tahan Lama</span>
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check-circle text-whatsapp mr-3"></i>
+                                <span>Ready Stock</span>
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check-circle text-whatsapp mr-3"></i>
+                                <span>Siap Goreng/Panggang</span>
+                            </li>
+                        </ul>
+                        <a href="#how-to-order" class="w-full bg-primary text-white py-4 rounded-xl font-semibold hover:bg-orange-600 transition-colors text-center block touch-feedback">
+                            <i class="fas fa-shopping-cart mr-2"></i>
+                            Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Bakso Ayam -->
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 fade-in-up">
+                    <div class="h-64 md:h-80 bg-gradient-to-br from-secondary to-accent flex items-center justify-center relative">
+                        <i class="fas fa-circle text-6xl md:text-8xl text-white opacity-90"></i>
+                        <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                            <span class="text-white font-semibold text-sm">Ready Stock</span>
+                        </div>
+                    </div>
+                    <div class="p-6 lg:p-8">
+                        <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">Bakso Ayam</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Bakso ayam frozen yang lembut dan kenyal. Cocok untuk sup, mie ayam, atau dimakan langsung dengan saus.
+                        </p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check-circle text-whatsapp mr-3"></i>
+                                <span>Tekstur Lembut & Kenyal</span>
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check-circle text-whatsapp mr-3"></i>
+                                <span>Frozen Food Berkualitas</span>
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check-circle text-whatsapp mr-3"></i>
+                                <span>Ready Stock</span>
+                            </li>
+                            <li class="flex items-center text-gray-700">
+                                <i class="fas fa-check-circle text-whatsapp mr-3"></i>
+                                <span>Praktis & Bergizi</span>
+                            </li>
+                        </ul>
+                        <a href="#how-to-order" class="w-full bg-secondary text-white py-4 rounded-xl font-semibold hover:bg-orange-500 transition-colors text-center block touch-feedback">
+                            <i class="fas fa-shopping-cart mr-2"></i>
+                            Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 lg:py-24 bg-white" id="about">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div class="fade-in-up">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                        Kenapa Pilih Kami?
+                    </h2>
+                    <div class="space-y-6 text-gray-600 text-lg">
+                        <p class="leading-relaxed">
+                            Kami adalah toko terpercaya yang menjual urutan ayam Bali dan bakso ayam frozen food berkualitas. Kami selalu pastikan produk yang kami jual fresh dan enak.
+                        </p>
+                        <p class="leading-relaxed">
+                            Pemesanan mudah via WhatsApp, respon cepat, dan pengiriman terpercaya. Tersedia COD (bayar ditempat), kirim via ojol untuk area dekat.
+                        </p>
+                        <p class="leading-relaxed">
+                            Harga bersaing, kualitas terjaga, dan ready stock untuk kebutuhan keluarga Anda. Pesan sekarang juga!
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-6 mt-8">
+                        <div class="text-center p-4 bg-gray-50 rounded-xl">
+                            <div class="text-3xl font-bold text-primary mb-2">Ready</div>
+                            <div class="text-gray-600">Stock</div>
+                        </div>
+                        <div class="text-center p-4 bg-gray-50 rounded-xl">
+                            <div class="text-3xl font-bold text-primary mb-2">Fast</div>
+                            <div class="text-gray-600">Respon</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in-up">
+                    <div class="relative">
+                        <div class="h-80 md:h-96 lg:h-[500px] bg-gradient-to-br from-primary to-secondary rounded-3xl flex items-center justify-center shadow-2xl">
+                            <i class="fas fa-award text-8xl lg:text-9xl text-white opacity-90"></i>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 w-20 md:w-24 h-20 md:h-24 bg-whatsapp rounded-full flex items-center justify-center shadow-xl">
+                            <i class="fas fa-star text-white text-xl md:text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Order Section -->
+    <section class="py-16 lg:py-24 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-700 text-white" id="how-to-order">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 fade-in-up">
+                    Cara Pemesanan
+                </h2>
+                <p class="text-lg md:text-xl opacity-90 max-w-3xl mx-auto fade-in-up">
+                    Mudah dan cepat, cukup 3 langkah untuk dapat produk yang enak!
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center fade-in-up">
+                    <div class="mb-6">
+                        <div class="w-20 h-20 bg-whatsapp rounded-full flex items-center justify-center text-2xl font-bold mx-auto shadow-lg">
+                            1
+                        </div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">Chat WhatsApp</h3>
+                        <p class="opacity-90 leading-relaxed">
+                            Klik tombol WhatsApp dan chat langsung untuk tanya harga dan ketersediaan stock.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="text-center fade-in-up">
+                    <div class="mb-6">
+                        <div class="w-20 h-20 bg-whatsapp rounded-full flex items-center justify-center text-2xl font-bold mx-auto shadow-lg">
+                            2
+                        </div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">Pilih & Pesan</h3>
+                        <p class="opacity-90 leading-relaxed">
+                            Tentukan produk dan jumlah yang mau dibeli, lalu konfirmasi pesanan.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="text-center fade-in-up">
+                    <div class="mb-6">
+                        <div class="w-20 h-20 bg-whatsapp rounded-full flex items-center justify-center text-2xl font-bold mx-auto shadow-lg">
+                            3
+                        </div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">Bayar & Terima</h3>
+                        <p class="opacity-90 leading-relaxed">
+                            Pilih pembayaran COD (bayar ditempat) atau transfer, bisa kirim via ojol.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 lg:py-24 bg-gray-50" id="contact">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 fade-in-up">
+                Pesan Sekarang
+            </h2>
+            <p class="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto fade-in-up leading-relaxed">
+                Mau pesan urutan ayam Bali atau bakso ayam? Chat aja via WhatsApp, ready stock siap kirim! Bisa COD atau transfer, kirim via ojol.
+            </p>
+            
+            <div class="mb-12 fade-in-up">
+                <a href="https://wa.me/6285739026117?text=Halo,%20mau%20tanya%20harga%20urutan%20ayam%20bali%20dan%20bakso%20ayam%20dong.%20Ready%20stock%20nggak?%20Bisa%20COD%20atau%20ojol?" 
+                   class="inline-flex items-center bg-whatsapp text-white px-8 md:px-12 py-5 rounded-full text-lg md:text-xl font-bold hover:bg-green-600 transition-all duration-300 transform hover:scale-105 shadow-xl touch-feedback" 
+                   target="_blank">
+                    <i class="fab fa-whatsapp mr-4 text-2xl"></i>
+                    Chat WhatsApp
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 fade-in-up">
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <i class="fas fa-phone text-3xl text-primary mb-4"></i>
+                    <h3 class="font-bold text-gray-900 mb-2">WhatsApp</h3>
+                    <p class="text-gray-600 text-sm">+62 857-3902-6117</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <i class="fas fa-clock text-3xl text-primary mb-4"></i>
+                    <h3 class="font-bold text-gray-900 mb-2">Chat Kami</h3>
+                    <p class="text-gray-600 text-sm">09:00 - 21:00 WIB</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <i class="fas fa-shipping-fast text-3xl text-primary mb-4"></i>
+                    <h3 class="font-bold text-gray-900 mb-2">Pengiriman</h3>
+                    <p class="text-gray-600 text-sm">COD / Ojol / Kirim</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl md:text-2xl font-bold text-primary mb-4">🍗 Urutan Ayam Bali</h3>
+                    <p class="text-gray-300 mb-4 leading-relaxed">
+                        Toko terpercaya urutan ayam Bali dan bakso ayam frozen food untuk keluarga Indonesia.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-whatsapp transition-colors p-2 rounded-full hover:bg-gray-800">
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-blue-400 transition-colors p-2 rounded-full hover:bg-gray-800">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-blue-600 transition-colors p-2 rounded-full hover:bg-gray-800">
+                            <i class="fab fa-facebook text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Produk Kami</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#products" class="hover:text-white transition-colors">Urutan Ayam Bali</a></li>
+                        <li><a href="#products" class="hover:text-white transition-colors">Bakso Ayam</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Tanya Harga</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Kontak</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 w-4"></i>
+                            <span>+62 857-3902-6117</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 w-4"></i>
+                            <span>urutanayambali@gmail.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 w-4"></i>
+                            <span>COD & Ojol Available</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    &copy; 2025 Toko Urutan Ayam Bali. Semua Hak Dilindungi.
+                </p>
+                <p class="text-gray-400 text-sm mt-2">
+                    Frozen Food Enak dan Praktis
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simplified and Fixed JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Mobile Menu Functions
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMobileMenu = document.getElementById('close-mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            
+            function openMobileMenu() {
+                mobileMenuOverlay.classList.remove('hidden');
+                setTimeout(() => {
+                    mobileMenu.classList.add('open');
+                    document.body.classList.add('mobile-menu-open');
+                }, 10);
+            }
+            
+            function closeMobileMenuHandler() {
+                mobileMenu.classList.remove('open');
+                setTimeout(() => {
+                    mobileMenuOverlay.classList.add('hidden');
+                    document.body.classList.remove('mobile-menu-open');
+                }, 300);
+            }
+            
+            // Event listeners
+            mobileMenuButton?.addEventListener('click', openMobileMenu);
+            closeMobileMenu?.addEventListener('click', closeMobileMenuHandler);
+            
+            // Close menu when clicking outside
+            mobileMenuOverlay?.addEventListener('click', function(e) {
+                if (e.target === mobileMenuOverlay) {
+                    closeMobileMenuHandler();
+                }
+            });
+            
+            // Close menu when clicking nav links
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    setTimeout(closeMobileMenuHandler, 150);
+                });
+            });
+            
+            // Close menu on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !mobileMenuOverlay.classList.contains('hidden')) {
+                    closeMobileMenuHandler();
+                }
+            });
+            
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            let lastScrollY = window.scrollY;
+            
+            function updateNavbar() {
+                const currentScrollY = window.scrollY;
+                
+                if (currentScrollY > 50) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
+                
+                lastScrollY = currentScrollY;
+            }
+            
+            window.addEventListener('scroll', updateNavbar, { passive: true });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const navbarHeight = navbar.offsetHeight;
+                        const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe fade-in elements
+            document.querySelectorAll('.fade-in-up').forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.1}s`;
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            });
+            
+            console.log('🍗 Urutan Ayam Bali website loaded successfully!');
+        });
+    </script>
+</body>
+</html>
